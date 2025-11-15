@@ -196,7 +196,7 @@ function Navbar() {
 
 function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col bg-black text-white overflow-hidden">
+    <section className="relative min-h-screen flex flex-col bg-black text-white overflow-hidden px-4 sm:px-6 md:px-10">
       <Navbar />
       <div className="absolute inset-0">
         <ParticleBackground />
