@@ -469,10 +469,11 @@ function ServicesSection() {
               {/* 🔗 Updated Link — now uses slug */}
               <Link
   href={`/services/${service.slug}`}
-  className="mt-4 block text-[10px] uppercase tracking-[0.18em] text-[#C8A86A] opacity-0 group-hover:opacity-100 transition"
+  className="mt-4 block text-[11px] uppercase tracking-[0.18em] text-[#C8A86A] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition bg-[#0B0B0B]/60 px-3 py-2 rounded-md border border-[#2a2a2a] md:border-none md:bg-transparent text-center active:scale-95"
 >
-  Explore capability →
+  Explore Capability →
 </Link>
+
 
             </motion.div>
           ))}
