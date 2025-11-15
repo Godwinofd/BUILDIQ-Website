@@ -296,7 +296,7 @@ function AboutSection() {
         className="absolute inset-0 bg-[linear-gradient(rgba(200,168,106,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(200,168,106,0.05)_1px,transparent_1px)] bg-[size:80px_80px] opacity-[0.4] pointer-events-none"
       />
 
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between relative z-10 gap-16">
+      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between relative z-10 gap-12 md:gap-16">
         {/* LEFT CONTENT */}
         <div className="flex-1 max-w-2xl">
           <motion.h2
@@ -355,7 +355,8 @@ function AboutSection() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          className="flex-1 relative w-full h-[400px] md:h-[550px] lg:h-[620px]"
+          className="flex-1 relative w-full h-[280px] sm:h-[380px] md:h-[550px] lg:h-[620px] mt-10 md:mt-0"
+
         >
           <SplineScene scene="/scene.splinecode" className="w-full h-full" />
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 via-transparent to-transparent" />
