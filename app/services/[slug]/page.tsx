@@ -1,9 +1,5 @@
-"use client";
-
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 import {
   SERVICES,
   SERVICE_META,
@@ -13,15 +9,13 @@ import {
   CASE_STUDIES,
   type CaseStudy,
 } from "../../data/caseStudies";
-import { use } from "react";
 
-export default function ServicePage({
+export default async function ServicePage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const router = useRouter();
-  const { slug } = use(params);
+  const { slug } = await params;
   const typedSlug = slug as ServiceSlug;
 
   // Validate slug
@@ -40,18 +34,17 @@ export default function ServicePage({
       {/* background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(200,168,106,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(200,168,106,0.05)_1px,transparent_1px)] bg-[size:80px_80px] opacity-[0.25] pointer-events-none" />
 
-      {/* Back Button */}
-      <motion.button
-        onClick={() => router.back()}
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="absolute top-8 left-8 text-[#C8A86A] text-sm uppercase tracking-[0.18em] flex items-center gap-2 hover:text-white transition z-20"
-      >
-        <span className="text-lg">←</span> Back
-      </motion.button>
-
       <div className="relative z-10 max-w-6xl mx-auto">
+        
+        {/* Back link */}
+        <div className="mb-10">
+          <Link
+            href="/#services"
+            className="text-[#C8A86A] text-xs uppercase tracking-[0.18em] hover:text-white transition"
+          >
+            ← Back
+          </Link>
+        </div>
 
         {/* Header */}
         <h1 className="text-4xl md:text-5xl font-serif text-[#C8A86A] mb-4">
@@ -120,3 +113,4 @@ export default function ServicePage({
     </main>
   );
 }
+
