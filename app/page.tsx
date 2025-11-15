@@ -345,9 +345,7 @@ function AboutSection() {
             </span>
           </motion.p>
 
-          <p className="text-[11px] uppercase tracking-[0.25em] text-neutral-500 mt-8">
-            Digital Form v1.2
-          </p>
+          
         </div>
 
         {/* RIGHT — ROBOT */}
@@ -467,11 +465,13 @@ function ServicesSection() {
               </p>
 
               {/* 🔗 Updated Link — now uses slug */}
-              <Link
-  href={`/services/${service.slug}`}
-  className="mt-4 block text-[11px] uppercase tracking-[0.18em] text-[#C8A86A] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition bg-[#0B0B0B]/60 px-3 py-2 rounded-md border border-[#2a2a2a] md:border-none md:bg-transparent text-center active:scale-95"
->
-  Explore Capability →
+              <Link href={`/services/${service.slug}`} scroll={false}>
+  <div className="cursor-pointer group">
+    {/* service card content here */}
+    <p className="text-[#C8A86A] mt-3 uppercase text-xs tracking-[0.18em] group-hover:text-white transition">
+      Explore Capability →
+    </p>
+  </div>
 </Link>
 
 
