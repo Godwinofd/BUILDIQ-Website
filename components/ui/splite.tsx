@@ -1,44 +1,54 @@
-'use client'
+"use client";
 
 import dynamic from "next/dynamic";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
-// Dynamically import Spline only on the client
-const Spline = dynamic(() => import("@splinetool/react-spline").then(mod => mod.default), {
-  ssr: false,
-});
+const Spline = dynamic(
+  () => import("@splinetool/react-spline").then((m) => m.default),
+  { ssr: false }
+);
 
 interface SplineSceneProps {
-  scene: string;
+  scene?: string;
   className?: string;
 }
 
-export function SplineScene({ scene, className = "" }: SplineSceneProps) {
-  const [error, setError] = useState<string | null>(null);
+/**
+ * Forces the Spline <canvas> to be interactive by setting pointer-events/z-index on mount.
+ */
+export function SplineScene({
+  scene = "/scene.splinecode",
+  className = "",
+}: SplineSceneProps) {
+  const wrapRef = useRef<HTMLDivElement | null>(null);
+  const [loaded, setLoaded] = useState(false);
 
+  // Safety: when loaded, force the inner canvas to accept pointer events and sit above bg layers
   useEffect(() => {
-    // Optional: log load attempts for debugging
-    console.log("Loading Spline scene:", scene);
-  }, [scene]);
+    if (!loaded || !wrapRef.current) return;
+    const canvas = wrapRef.current.querySelector("canvas");
+    if (canvas) {
+      canvas.style.pointerEvents = "auto";
+      canvas.style.position = "relative";
+      canvas.style.zIndex = "20"; // above typical z-10 content, below headers if needed
+    }
+  }, [loaded]);
 
   return (
-    <div className={className}>
-      {error ? (
-        <div className="text-red-400 text-sm text-center mt-10">
-          Failed to load 3D scene. Check your Spline URL.
-        </div>
-      ) : (
-        // @ts-ignore: Spline types are incomplete
+    <div ref={wrapRef} className={`absolute inset-0 ${className}`}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: loaded ? 1 : 0 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        className="size-full"
+      >
+        {/* @ts-ignore */}
         <Spline
           scene={scene}
-          onError={(e: any) => {
-            console.error("Spline load error:", e);
-            setError("Spline scene could not be loaded.");
-          }}
-          onLoad={() => console.log("Spline scene loaded successfully.")}
+          onLoad={() => setLoaded(true)}
         />
-      )}
+      </motion.div>
     </div>
   );
 }
-
