@@ -300,17 +300,18 @@ function AboutSection() {
         {/* LEFT CONTENT */}
         <div className="flex-1 max-w-2xl">
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-serif leading-snug mb-6"
-          >
-            Where
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C8A86A] to-[#b39156] px-2">
-              Architecture
-            </span>
-            <span className="ml-2">Meets Intelligence</span>
-          </motion.h2>
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  className="text-3xl sm:text-4xl md:text-6xl font-serif leading-snug md:leading-tight mb-6 text-center md:text-left px-2"
+>
+  Where{" "}
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C8A86A] to-[#b39156]">
+    Architecture
+  </span>{" "}
+  Meets <br className="sm:hidden" /> Intelligence
+</motion.h2>
+
 
           <div className="h-[2px] w-40 bg-[#C8A86A] mb-10" />
 
