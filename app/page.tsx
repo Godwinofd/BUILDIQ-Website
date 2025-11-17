@@ -185,7 +185,10 @@ function Navbar() {
   return (
     <header className="absolute top-0 left-0 right-0 z-30 px-6 pt-7 flex items-center justify-between">
       {/* Logo */}
-      <div className="text-3xl font-serif text-white tracking-wide">BIQ</div>
+      <Link href="/" className="text-3xl font-serif tracking-wide text-[#C8A86A] cursor-pointer">
+  BIQ
+</Link>
+
 
       {/* Desktop nav */}
       <nav className="hidden md:flex space-x-10 text-sm text-white">
@@ -292,7 +295,7 @@ function HeroSection() {
         </motion.a>
 
         <motion.a
-  href="https://calendly.com/contact-buildiqs/new-meeting"
+  href="https://calendly.com/enquiry-buildiqs/30min"
   target="_blank"
   rel="noopener noreferrer"
   initial={{ opacity: 0, y: 20 }}
@@ -659,7 +662,7 @@ function ContactSection() {
         <div className="flex flex-col md:flex-row justify-center items-center gap-6">
           {/* Calendly button */}
           <motion.a
-            href="https://calendly.com/contact-buildiqs/new-meeting"
+            href="https://calendly.com/enquiry-buildiqs/30min"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}

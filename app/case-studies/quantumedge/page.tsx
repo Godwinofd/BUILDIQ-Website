@@ -136,7 +136,7 @@ export default function QuantumEdgePage() {
           <p className="text-neutral-400 text-sm tracking-[0.2em]">
             BUILDIQ CASE STUDY · QUANTUMEDGE             
             <motion.a
-  href="https://calendly.com/contact-buildiqs/new-meeting"
+  href="https://calendly.com/enquiry-buildiqs/30min"
   target="_blank"
   rel="noopener noreferrer"
   initial={{ opacity: 0, y: 20 }}
