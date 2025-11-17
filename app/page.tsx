@@ -180,17 +180,68 @@ function ParticleBackground() {
 // ---------------- NAVBAR ----------------
 
 function Navbar() {
+  const [open, setOpen] = useState(false)
+
   return (
-    <header className="absolute top-0 left-0 right-0 z-30 px-10 pt-7 flex items-center justify-between">
+    <header className="absolute top-0 left-0 right-0 z-30 px-6 pt-7 flex items-center justify-between">
+      {/* Logo */}
       <div className="text-3xl font-serif text-white tracking-wide">BIQ</div>
-      <nav className="space-x-10 text-sm text-white">
+
+      {/* Desktop nav */}
+      <nav className="hidden md:flex space-x-10 text-sm text-white">
         <a href="#about" className="hover:text-[#C8A86A] transition">About</a>
         <a href="#services" className="hover:text-[#C8A86A] transition">Services</a>
         <a href="#contact" className="hover:text-[#C8A86A] transition">Contact</a>
       </nav>
+
+      {/* Mobile Hamburger */}
+      <button
+        className="md:hidden text-white text-3xl focus:outline-none"
+        onClick={() => setOpen(!open)}
+      >
+        {open ? "✕" : "☰"}
+      </button>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-20 left-0 w-full bg-black/90 backdrop-blur-md border-t border-[#222] py-6 md:hidden"
+          >
+            <div className="flex flex-col items-center space-y-6 text-white text-sm">
+              <a
+                href="#about"
+                onClick={() => setOpen(false)}
+                className="hover:text-[#C8A86A] transition"
+              >
+                About
+              </a>
+              <a
+                href="#services"
+                onClick={() => setOpen(false)}
+                className="hover:text-[#C8A86A] transition"
+              >
+                Services
+              </a>
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="hover:text-[#C8A86A] transition"
+              >
+                Contact
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
+
 
 // ---------------- HERO ----------------
 
