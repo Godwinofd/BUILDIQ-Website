@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,10 +15,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "BuildIQ",
-  description: "We design and automate digital spaces with architectural precision.",
+  description:
+    "We design and automate digital spaces with architectural precision.",
   icons: {
-    icon: "/images/logo/logo.jpg", // 👈 Add your custom favicon here
-    
+    icon: "/images/logo/logo.jpg",
   },
 };
 
@@ -32,6 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
